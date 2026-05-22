@@ -1,0 +1,20 @@
+# Sistema de Folha de Pagamento em Java
+
+## Objetivo
+Criar um sistema simples para cadastrar colaboradores e calcular o salário final de acordo com o tipo de vínculo.
+
+## Tipos de colaboradores
+1. Funcionário padrão
+2. Funcionário comissionado
+3. Funcionário de produção
+
+## Funcionalidades
+- Cadastrar colaborador
+- Listar colaboradores
+- Calcular salário final
+- Sair do sistema
+
+## Regras
+- Salário base fixo: R$ 2.000,00
+- Não permitir valores negativos
+- Armazenar colaboradores em ArrayList
