@@ -21,5 +21,7 @@ public class Main {
         System.out.println("Colaborador criado: " + colaborador.getNome());
         System.out.println("Tipo: " + colaborador.getTipo());
         System.out.println("Registro: " + colaborador.getRegistro());
+ 
+       scanner.close();
     }
 }
