@@ -18,11 +18,24 @@ public class Main {
 
         System.out.println( "\n Tipos: \n 1 - padrão \n 2 - comissionado \n 3 - de produção");
 
-        String tipo = scanner.nextLine();
+        int opcaoTipo = scanner.nextInt();
+        scanner.nextLine(); // Limpar o buffer
 
-        Colaborador colaborador = new Colaborador(registro, nome, tipo);
+        switch (opcaoTipo) {
+            case 1:
+              System.out.println("Colaborador padrão selecionado.");
+                break;
+            case 2:
+                System.out.println("Colaborador comissionado selecionado.");
+                break;
+            case 3:
+                System.out.println("Colaborador de produção selecionado.");
+                break;
+            default:
+                System.out.println("Tipo de colaborador inválido.");
+        }
 
-       scanner.close();
+            Colaborador colaborador = new Colaborador(registro, nome, opcaoTipo);
 
         ArrayList<Colaborador> colaboradores = new ArrayList<>();
         colaboradores.add(colaborador);
@@ -31,5 +44,6 @@ public class Main {
             System.out.println("Colaborador: " + c.getNome() + "\n" + "Tipo: " + c.getTipo() + "\n" + "Registro: " + c.getRegistro());
         }
 
+         scanner.close();
     }
 }
