@@ -3,6 +3,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+        
+        double salarioBase = 2000.0;
+        
         System.out.println("Sistema folha de pagamentos");
 
         Scanner scanner = new Scanner(System.in);
@@ -30,11 +33,20 @@ do {
 
         System.out.print("Digite o tipo do colaborador: \n"); 
 
-        System.out.println( "\n Tipos: \n 1 - padrão \n 2 - comissionado \n 3 - de produção");
+        System.out.println( "\n Tipos: \n 1 - padrão \n 2 - comissionado \n 3 - de produção");     
 
         int opcaoTipo = scanner.nextInt();
         scanner.nextLine(); // Limpar o buffer
         Colaborador colaborador = new Colaborador(registro, nome, opcaoTipo);
+
+        if (opcaoTipo == 1) {
+            // Lógica para colaborador padrão
+        } else if (opcaoTipo == 2) {
+            // Lógica para colaborador comissionado
+        } else if (opcaoTipo == 3) {
+            // Lógica para colaborador de produção
+        }
+
         colaboradores.add(colaborador);
             
             break;
