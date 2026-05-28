@@ -6,8 +6,22 @@ public class Main {
         System.out.println("Sistema folha de pagamentos");
 
         Scanner scanner = new Scanner(System.in);
+         ArrayList<Colaborador> colaboradores = new ArrayList<>();
+        int opcao;
 
-        System.out.print("Digite o registro do colaborador: ");
+do {
+    System.out.println("\n===== MENU =====");
+    System.out.println("1 - Cadastrar colaborador");
+    System.out.println("2 - Listar colaboradores");
+    System.out.println("3 - Sair");
+    System.out.print("Escolha uma opção: ");
+    opcao = scanner.nextInt();
+    scanner.nextLine();
+
+    switch (opcao) {
+        case 1:
+            System.out.println("Cadastrar colaborador");
+            System.out.print("Digite o registro do colaborador: ");
         int registro = scanner.nextInt();
         scanner.nextLine(); // Limpar o buffer
 
@@ -20,25 +34,28 @@ public class Main {
 
         int opcaoTipo = scanner.nextInt();
         scanner.nextLine(); // Limpar o buffer
-
-        switch (opcaoTipo) {
-            case 1:
-              System.out.println("Colaborador padrão selecionado.");
-                break;
-            case 2:
-                System.out.println("Colaborador comissionado selecionado.");
-                break;
-            case 3:
-                System.out.println("Colaborador de produção selecionado.");
-                break;
-            default:
-                System.out.println("Tipo de colaborador inválido.");
-        }
-
-            Colaborador colaborador = new Colaborador(registro, nome, opcaoTipo);
-
-        ArrayList<Colaborador> colaboradores = new ArrayList<>();
+        Colaborador colaborador = new Colaborador(registro, nome, opcaoTipo);
         colaboradores.add(colaborador);
+            
+            break;
+
+        case 2:
+            System.out.println("Listar colaboradores");
+            break;
+
+        case 3:
+            System.out.println("Saindo...");
+            break;
+
+        default:
+            System.out.println("Opção inválida.");
+            break;                
+    }
+
+} while (opcao != 3);
+
+       
+        
 
         for (Colaborador c : colaboradores) {
             System.out.println("Colaborador: " + c.getNome() + "\n" + "Tipo: " + c.getTipo() + "\n" + "Registro: " + c.getRegistro());
