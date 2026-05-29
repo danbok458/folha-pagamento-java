@@ -5,6 +5,8 @@ public class Main {
     public static void main(String[] args) throws Exception {
         
         double salarioBase = 2000.0;
+        double aumento = salarioBase.5/100; 
+        System.out.println(aumento);
         
         System.out.println("Sistema folha de pagamentos");
 
@@ -61,13 +63,10 @@ do {
 
         default:
             System.out.println("Opção inválida.");
-            break;                
+          break;               
     }
 
 } while (opcao != 3);
-
-       
-        
 
         for (Colaborador c : colaboradores) {
             System.out.println("Colaborador: " + c.getNome() + "\n" + "Tipo: " + c.getTipo() + "\n" + "Registro: " + c.getRegistro());
