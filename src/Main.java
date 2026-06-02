@@ -5,8 +5,8 @@ public class Main {
     public static void main(String[] args) throws Exception {
         
         double salarioBase = 2000.0;
-        double aumento = salarioBase * 5/100; 
-        System.out.println(aumento);
+        double aumentoBase = salarioBase * 5/100; 
+        System.out.println(aumentoBase);
         
         System.out.println("Sistema folha de pagamentos");
 
