@@ -4,10 +4,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws Exception {
         
-        double salarioBase = 2000.0;
-        double aumentoBase = salarioBase * 5/100; 
-        double salarioComAumento = salarioBase + aumentoBase;
-        
+       final double salarioBase = 2000.0; //base salarial
+       
         System.out.println("Sistema folha de pagamentos");
 
         Scanner scanner = new Scanner(System.in);
@@ -19,6 +17,7 @@ do {
     System.out.println("1 - Cadastrar colaborador");
     System.out.println("2 - Listar colaboradores");
     System.out.println("3 - Sair");
+    System.out.println("================");
     System.out.print("Escolha uma opção: ");
     opcao = scanner.nextInt();
     scanner.nextLine();
@@ -42,27 +41,42 @@ do {
         Colaborador colaborador = new Colaborador(registro, nome, opcaoTipo);
 
         if (opcaoTipo == 1) {
-            System.out.println("Colaborador padrão salvo com sucesso. \n Salário base: " + salarioBase + "\n Aumento: " + aumentoBase + "\n Salário com aumento: " + salarioComAumento);
+            System.out.println("Colaborador padrão salvo com sucesso. \n" + "\n Salário: " + salarioBase);
+        
         } else if (opcaoTipo == 2) {
             System.out.println("Qual o valor das vendas do colaborador comissionado? ");
-            double valorVendas = scanner.nextDouble();
+            double vendas = scanner.nextDouble();
             scanner.nextLine(); // Limpar o buffer
-            System.out.println("Colaborador comissionado salvo com sucesso. \n Salário: " + (salarioComAumento + valorVendas));
+
+            System.out.println("Qual o percentual de comissão do colaborador comissionado? ");
+            double percentual = scanner.nextDouble();
+            scanner.nextLine(); // Limpar o buffer
+
+            System.out.println("Colaborador comissionado salvo com sucesso. \n Salário: " + (salarioBase + (vendas * percentual / 100)));
+        
         } else if (opcaoTipo == 3) {
             System.out.println("Número de peças produzidas pelo colaborador de produção: ");
             int pecasProduzidas = scanner.nextInt();
             scanner.nextLine(); // Limpar o buffer
-            System.out.println("Colaborador de produção salvo com sucesso. \n Salário: " + (salarioComAumento + (pecasProduzidas * 10)));
+
+            System.out.println("Qual o valor pago por peça produzida?");
+            double valorPorPeca = scanner.nextDouble();
+            scanner.nextLine(); // Limpar o buffer
+
+            System.out.println("Colaborador de produção salvo com sucesso. \n Salário: " + (salarioBase + (pecasProduzidas * valorPorPeca)));
         }
 
-        colaboradores.add(colaborador);
-            
+        if (opcaoTipo < 1 || opcaoTipo > 3) {
+    System.out.println("Tipo de colaborador inválido. Colaborador não cadastrado.");
+} else {
+    colaboradores.add(colaborador);
+}
             break;
 
         case 2:
             System.out.println("Listar colaboradores");
             System.out.println("Colaboradores cadastrados: " + colaboradores.size() + "\n");
-            colaboradores.forEach(c -> System.out.println("Colaborador: " + c.getNome() + "\n" + "Tipo: " + c.getTipo() + "\n" + "Registro: " + c.getRegistro() + "\n" + "-----------------------------"));
+            colaboradores.forEach(c -> System.out.println("-----------------------------" + "\n" + "Colaborador: " + c.getNome() + "\n" + "Tipo: " + c.getTipo() + "\n" + "Registro: " + c.getRegistro() + "\n" + "-----------------------------"));
             break;
 
         case 3:
