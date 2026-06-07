@@ -24,11 +24,21 @@ do {
 
     switch (opcao) {
         case 1:
+
+        int registro;
+
+        do {
             System.out.println("Cadastrar colaborador");
             System.out.print("\n" + "Digite o registro do colaborador: ");
-            int registro = scanner.nextInt();
+            registro = scanner.nextInt();
             scanner.nextLine(); // Limpar o buffer
+            
+             if (registro < 0) {
+            System.out.println("Registro inválido! Digite um número válido.");
+        }
 
+ 
+       } while (registro < 0); // Garantir que o registro seja um número positivo
         System.out.print("\n" + "Digite o nome do colaborador: ");
         String nome = scanner.nextLine();
 
@@ -44,34 +54,67 @@ do {
             System.out.println("Colaborador padrão salvo com sucesso. \n" + "\n Salário: " + salarioBase);
         
         } else if (opcaoTipo == 2) {
+            
+double vendas;
+
+           do {
             System.out.println("Qual o valor das vendas do colaborador comissionado? ");
-            double vendas = scanner.nextDouble();
+            vendas = scanner.nextDouble();
             scanner.nextLine(); // Limpar o buffer
+                if (vendas < 0) {
+                    System.out.println("Valor de vendas inválido! Digite um número válido.");
+                }
+            } while (vendas < 0); // Garantir que o valor das vendas seja um número positivo
 
+double percentual;
+
+             do {
             System.out.println("Qual o percentual de comissão do colaborador comissionado? ");
-            double percentual = scanner.nextDouble();
+            percentual = scanner.nextDouble();
+            scanner.nextLine(); // Limpar o buffer
+                if (percentual < 0 || percentual > 100) {
+                    System.out.println("Percentual de comissão inválido! Digite um número entre 0 e 100.");
+                }
+            System.out.println("Colaborador comissionado salvo com sucesso. \n Salário: " + (salarioBase + (vendas * percentual / 100)));
+        } while (percentual < 0 || percentual > 100 || vendas < 0); // Garantir que o percentual seja entre 0 e 100
+        
+    } else if (opcaoTipo == 3) {
+            
+int pecasProduzidas;
+double valorPorPeca;
+
+             do {
+
+            System.out.println("Número de peças produzidas pelo colaborador de produção: ");
+            pecasProduzidas = scanner.nextInt();
             scanner.nextLine(); // Limpar o buffer
 
-            System.out.println("Colaborador comissionado salvo com sucesso. \n Salário: " + (salarioBase + (vendas * percentual / 100)));
-        
-        } else if (opcaoTipo == 3) {
-            System.out.println("Número de peças produzidas pelo colaborador de produção: ");
-            int pecasProduzidas = scanner.nextInt();
-            scanner.nextLine(); // Limpar o buffer
+            if (pecasProduzidas < 0) {
+                System.out.println("Número de peças inválido! Digite um número válido.");
+            }
 
             System.out.println("Qual o valor pago por peça produzida?");
-            double valorPorPeca = scanner.nextDouble();
+            valorPorPeca = scanner.nextDouble();
             scanner.nextLine(); // Limpar o buffer
 
+            if (valorPorPeca < 0) {
+                System.out.println("Valor por peça inválido! Digite um número válido.");
+            }
+
             System.out.println("Colaborador de produção salvo com sucesso. \n Salário: " + (salarioBase + (pecasProduzidas * valorPorPeca)));
-        }
+        } while (pecasProduzidas < 0 || valorPorPeca < 0); // Garantir que o número de peças e o valor por peça sejam positivos
+
+    }
 
         if (opcaoTipo < 1 || opcaoTipo > 3) {
     System.out.println("Tipo de colaborador inválido. Colaborador não cadastrado.");
 } else {
     colaboradores.add(colaborador);
 }
-            break;
+
+break;
+              
+        
 
         case 2:
             System.out.println("Listar colaboradores");
@@ -91,5 +134,6 @@ do {
 } while (opcao != 3);
 
          scanner.close();
+
+        }
     }
-}
